@@ -65,7 +65,7 @@ export class AgentService {
    */
   async getAgentByBuilding(building_id: string) {
     try {
-      const result = await this.agentRepository.findOne({
+      const result = await this.agentRepository.find({
         where: { building_id },
       });
       return result;

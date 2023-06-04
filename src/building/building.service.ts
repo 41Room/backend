@@ -54,7 +54,6 @@ export class BuildingService {
       });
 
       const agent = await this.agentService.getAgentByBuilding(building_id);
-      delete agent.agent_login_pw;
 
       return { ...result, agent };
     } catch (e) {
