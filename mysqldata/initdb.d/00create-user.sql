@@ -1,5 +1,5 @@
-CREATE USER 'chunsik'@'%' IDENTIFIED BY "chunsik";
+CREATE USER '41room'@'%' IDENTIFIED BY "41room";
 
-GRANT ALL PRIVILEGES ON *.* TO 'chunsik'@'%';
+GRANT ALL PRIVILEGES ON *.* TO '41room'@'%';
 
 FLUSH PRIVILEGES;

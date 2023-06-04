@@ -4,6 +4,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import * as path from 'path';
 import { DbModule } from './db/db.module';
 import { DbService } from './db/db.service';
+import { BuildingModule } from './building/building.module';
+import { AgentModule } from './agent/agent.module';
+import { TenantModule } from './tenant/tenant.module';
 
 @Module({
   imports: [
@@ -17,6 +20,9 @@ import { DbService } from './db/db.service';
       inject: [DbService],
     }),
     DbModule,
+    BuildingModule,
+    AgentModule,
+    TenantModule,
   ],
   controllers: [],
   providers: [],
