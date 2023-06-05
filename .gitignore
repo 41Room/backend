@@ -276,4 +276,6 @@ mysqldata/data
 
 deploy.json
 
+uploads
+
 # End of https://www.toptal.com/developers/gitignore/api/dotenv,macos,linux,windows,visualstudiocode,node
