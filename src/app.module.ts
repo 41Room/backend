@@ -9,6 +9,7 @@ import { AgentModule } from './agent/agent.module';
 import { TenantModule } from './tenant/tenant.module';
 import { PlantModule } from './plant/plant.module';
 import { ReviewModule } from './review/review.module';
+import { FileModule } from './file/file.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { ReviewModule } from './review/review.module';
     TenantModule,
     PlantModule,
     ReviewModule,
+    FileModule,
   ],
   controllers: [],
   providers: [],
