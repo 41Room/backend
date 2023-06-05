@@ -23,6 +23,9 @@ export class AgentEntity {
   @Column()
   agent_nm: string;
 
+  @Column()
+  wallet_addr: string;
+
   @CreateDateColumn()
   created_at: Date;
 

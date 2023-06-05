@@ -4,6 +4,7 @@ import { TenantEntity } from 'src/entity';
 import { Repository } from 'typeorm';
 import { CreateTenantDTO, UpdateTenantDTO } from './dto';
 import * as argon from 'argon2';
+import { TenantSigninDTO } from 'src/auth/dto';
 
 @Injectable()
 export class TenantService {
@@ -72,6 +73,32 @@ export class TenantService {
       });
 
       delete result.tenant_login_pw;
+      return result;
+    } catch (e) {
+      throw e;
+    }
+  }
+
+  /**
+   * 세대 로그인
+   * --
+   * @param tenantInfo
+   * @returns
+   */
+  async signinTenant(tenantInfo: TenantSigninDTO) {
+    try {
+      const { tenant_login_id, tenant_login_pw } = tenantInfo;
+      const result = await this.tenantRepository.findOneOrFail({
+        where: { tenant_login_id },
+      });
+      const { tenant_login_pw: pw } = result;
+      const isMatch = await argon.verify(pw, tenant_login_pw);
+      if (!isMatch) {
+        throw new Error('아이디나 비밀번호가 일치하지 않습니다.');
+      }
+
+      delete result.tenant_login_pw;
+
       return result;
     } catch (e) {
       throw e;

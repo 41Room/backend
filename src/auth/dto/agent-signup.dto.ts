@@ -1,6 +1,6 @@
 import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
 
-export class CreateAgentDTO {
+export class AgentSignupDTO {
   @IsOptional()
   @IsString()
   agent_id?: string;
@@ -23,5 +23,5 @@ export class CreateAgentDTO {
 
   @IsOptional()
   @IsString()
-  wallet_addr: string;
+  wallet_addr?: string;
 }
