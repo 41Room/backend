@@ -16,9 +16,9 @@ const whitelist = [
 
 const dirList = [
   'uploads',
-  'uploads/equipment',
   'uploads/users',
-  'uploads/trace',
+  'uploads/plant',
+  'uploads/community',
 ];
 
 async function bootstrap() {

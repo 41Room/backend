@@ -7,6 +7,7 @@ import { DbService } from './db/db.service';
 import { BuildingModule } from './building/building.module';
 import { AgentModule } from './agent/agent.module';
 import { TenantModule } from './tenant/tenant.module';
+import { PlantModule } from './plant/plant.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { TenantModule } from './tenant/tenant.module';
     BuildingModule,
     AgentModule,
     TenantModule,
+    PlantModule,
   ],
   controllers: [],
   providers: [],
