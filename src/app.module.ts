@@ -8,6 +8,7 @@ import { BuildingModule } from './building/building.module';
 import { AgentModule } from './agent/agent.module';
 import { TenantModule } from './tenant/tenant.module';
 import { PlantModule } from './plant/plant.module';
+import { ReviewModule } from './review/review.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { PlantModule } from './plant/plant.module';
     AgentModule,
     TenantModule,
     PlantModule,
+    ReviewModule,
   ],
   controllers: [],
   providers: [],
