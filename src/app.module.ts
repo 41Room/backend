@@ -10,6 +10,7 @@ import { TenantModule } from './tenant/tenant.module';
 import { PlantModule } from './plant/plant.module';
 import { ReviewModule } from './review/review.module';
 import { FileModule } from './file/file.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { FileModule } from './file/file.module';
     PlantModule,
     ReviewModule,
     FileModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [],

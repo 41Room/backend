@@ -1,21 +1,29 @@
 import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
 
-export class CreateAgentDTO {
+export class TenantSignupDTO {
   @IsOptional()
   @IsString()
-  agent_id?: string;
+  tenant_id?: string;
 
   @IsNotEmpty()
   @IsString()
-  agent_login_id: string;
+  tenant_login_id: string;
 
   @IsNotEmpty()
   @IsString()
-  agent_login_pw: string;
+  tenant_login_pw: string;
 
   @IsNotEmpty()
   @IsString()
-  agent_nm: string;
+  tenant_nm: string;
+
+  @IsNotEmpty()
+  @IsString()
+  tenant_dong: string;
+
+  @IsNotEmpty()
+  @IsString()
+  tenant_ho: string;
 
   @IsNotEmpty()
   @IsString()
@@ -23,5 +31,5 @@ export class CreateAgentDTO {
 
   @IsOptional()
   @IsString()
-  wallet_addr: string;
+  wallet_addr?: string;
 }

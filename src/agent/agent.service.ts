@@ -4,6 +4,7 @@ import { Repository } from 'typeorm';
 import * as argon from 'argon2';
 import { AgentEntity } from 'src/entity';
 import { CreateAgentDTO, UpdateAgentDTO } from './dto';
+import { AgentSigninDTO } from 'src/auth/dto';
 
 @Injectable()
 export class AgentService {
@@ -68,6 +69,34 @@ export class AgentService {
       const result = await this.agentRepository.find({
         where: { building_id },
       });
+      return result;
+    } catch (e) {
+      throw e;
+    }
+  }
+
+  /**
+   * 대리인 로그인
+   * --
+   * @param agentInfo
+   * @returns
+   */
+  async signinAgent(agentInfo: AgentSigninDTO) {
+    try {
+      const { agent_login_id, agent_login_pw } = agentInfo;
+      const result = await this.agentRepository.findOneOrFail({
+        where: { agent_login_id },
+      });
+
+      const { agent_login_pw: pw } = result;
+      const isMatch = await argon.verify(pw, agent_login_pw);
+
+      if (!isMatch) {
+        throw new Error('비밀번호가 일치하지 않습니다.');
+      }
+
+      delete result.agent_login_pw;
+
       return result;
     } catch (e) {
       throw e;
