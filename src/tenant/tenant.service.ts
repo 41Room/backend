@@ -90,13 +90,13 @@ export class TenantService {
     try {
       const { tenant_login_id, tenant_login_pw } = tenantInfo;
       const result = await this.tenantRepository.findOneOrFail({
-        where: { tenant_login_id },
+        where: { tenant_login_id, tenant_login_pw },
       });
-      const { tenant_login_pw: pw } = result;
-      const isMatch = await argon.verify(pw, tenant_login_pw);
-      if (!isMatch) {
-        throw new Error('아이디나 비밀번호가 일치하지 않습니다.');
-      }
+      // const { tenant_login_pw: pw } = result;
+      // const isMatch = await argon.verify(pw, tenant_login_pw);
+      // if (!isMatch) {
+      //   throw new Error('아이디나 비밀번호가 일치하지 않습니다.');
+      // }
 
       delete result.tenant_login_pw;
 

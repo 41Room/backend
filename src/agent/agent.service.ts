@@ -85,15 +85,15 @@ export class AgentService {
     try {
       const { agent_login_id, agent_login_pw } = agentInfo;
       const result = await this.agentRepository.findOneOrFail({
-        where: { agent_login_id },
+        where: { agent_login_id, agent_login_pw },
       });
 
-      const { agent_login_pw: pw } = result;
-      const isMatch = await argon.verify(pw, agent_login_pw);
+      // const { agent_login_pw: pw } = result;
+      // const isMatch = await argon.verify(pw, agent_login_pw);
 
-      if (!isMatch) {
-        throw new Error('비밀번호가 일치하지 않습니다.');
-      }
+      // if (!isMatch) {
+      //   throw new Error('비밀번호가 일치하지 않습니다.');
+      // }
 
       delete result.agent_login_pw;
 
