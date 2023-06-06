@@ -10,6 +10,7 @@ import * as dotenv from 'dotenv';
 
 const whitelist = [
   'http://localhost:3000',
+  'http://localhost:5173',
   'https://41room.islab.dev',
   'https://api-41room.islab.dev',
 ];
