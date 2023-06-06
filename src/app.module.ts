@@ -11,6 +11,7 @@ import { PlantModule } from './plant/plant.module';
 import { ReviewModule } from './review/review.module';
 import { FileModule } from './file/file.module';
 import { AuthModule } from './auth/auth.module';
+import { CommunityModule } from './community/community.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { AuthModule } from './auth/auth.module';
     ReviewModule,
     FileModule,
     AuthModule,
+    CommunityModule,
   ],
   controllers: [],
   providers: [],
