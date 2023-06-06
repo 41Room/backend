@@ -50,6 +50,7 @@ export class TenantService {
           'wallet_id',
           'created_at',
           'modified_at',
+          'building_id',
         ],
         where: { building_id },
       });
