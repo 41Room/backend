@@ -62,6 +62,7 @@ CREATE TABLE IF NOT EXISTS `41room`.`t_agent` (
   `agent_login_id` VARCHAR(45) NOT NULL,
   `agent_login_pw` VARCHAR(255) NOT NULL,
   `agent_nm` VARCHAR(45) NULL,
+  `wallet_addr` VARCHAR(255) NULL,
   `created_at` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
   `modified_at` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`agent_id`),
@@ -106,8 +107,8 @@ CREATE TABLE IF NOT EXISTS `41room`.`t_plant` (
   `plant_desc` VARCHAR(45) NULL,
   `plant_img` VARCHAR(255) NOT NULL,
   `plant_fee` FLOAT NOT NULL,
-  `created_at` DATETIME NULL,
-  `modified_at` DATETIME NULL,
+  `created_at` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
+  `modified_at` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`plant_id`),
   INDEX `fk_t_plant_t_building1_idx` (`building_id` ASC) VISIBLE,
   CONSTRAINT `fk_t_plant_t_building1`
@@ -124,24 +125,17 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `41room`.`t_vote` (
   `vote_id` CHAR(36) NOT NULL,
   `community_id` CHAR(36) NOT NULL,
-  `tenant_id` CHAR(36) NOT NULL,
   `vote_title` VARCHAR(255) NOT NULL,
   `vote_description` TEXT NULL,
   `vote_start` DATETIME NULL,
   `vote_end` DATETIME NULL,
   PRIMARY KEY (`vote_id`),
   INDEX `fk_t_vote_t_community1_idx` (`community_id` ASC) VISIBLE,
-  INDEX `fk_t_vote_t_tenant1_idx` (`tenant_id` ASC) VISIBLE,
   CONSTRAINT `fk_t_vote_t_community1`
     FOREIGN KEY (`community_id`)
     REFERENCES `41room`.`t_community` (`community_id`)
     ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  CONSTRAINT `fk_t_vote_t_tenant1`
-    FOREIGN KEY (`tenant_id`)
-    REFERENCES `41room`.`t_tenant` (`tenant_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
@@ -154,17 +148,17 @@ CREATE TABLE IF NOT EXISTS `41room`.`t_reply` (
   `created_at` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
   `modified_at` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
   `community_id` CHAR(36) NOT NULL,
-  `t_tenant_tenant_id` CHAR(36) NOT NULL,
+  `tenant_id` CHAR(36) NOT NULL,
   PRIMARY KEY (`reply_id`),
   INDEX `fk_t_reply_t_community1_idx` (`community_id` ASC) VISIBLE,
-  INDEX `fk_t_reply_t_tenant1_idx` (`t_tenant_tenant_id` ASC) VISIBLE,
+  INDEX `fk_t_reply_t_tenant1_idx` (`tenant_id` ASC) VISIBLE,
   CONSTRAINT `fk_t_reply_t_community1`
     FOREIGN KEY (`community_id`)
     REFERENCES `41room`.`t_community` (`community_id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT `fk_t_reply_t_tenant1`
-    FOREIGN KEY (`t_tenant_tenant_id`)
+    FOREIGN KEY (`tenant_id`)
     REFERENCES `41room`.`t_tenant` (`tenant_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
@@ -180,8 +174,8 @@ CREATE TABLE IF NOT EXISTS `41room`.`t_review` (
   `tenant_id` CHAR(36) NOT NULL,
   `review_content` TEXT NOT NULL,
   `review_grade` FLOAT NOT NULL,
-  `created_at` DATETIME NULL,
-  `modified_at` DATETIME NULL,
+  `created_at` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
+  `modified_at` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`review_id`),
   INDEX `fk_t_review_t_plant1_idx` (`plant_id` ASC) VISIBLE,
   INDEX `fk_t_review_t_tenant1_idx` (`tenant_id` ASC) VISIBLE,
