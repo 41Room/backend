@@ -76,7 +76,7 @@ export class CommunityService {
     try {
       const result = await this.communityRepository.findOne({
         where: { community_id },
-        relations: ['tenant'],
+        relations: ['tenant', 'reply', 'vote'],
       });
 
       return result;

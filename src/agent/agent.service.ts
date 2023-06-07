@@ -21,12 +21,13 @@ export class AgentService {
    */
   async createAgent(agentInfo: CreateAgentDTO) {
     try {
-      const { agent_login_pw } = agentInfo;
-      const hash = await argon.hash(agent_login_pw);
-      const result = await this.agentRepository.save({
-        ...agentInfo,
-        agent_login_pw: hash,
-      });
+      const result = await this.agentRepository.save(agentInfo);
+      // const { agent_login_pw } = agentInfo;
+      // const hash = await argon.hash(agent_login_pw);
+      // const result = await this.agentRepository.save({
+      //   ...agentInfo,
+      //   agent_login_pw: hash,
+      // });
 
       return result;
     } catch (e) {

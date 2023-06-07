@@ -27,7 +27,7 @@ export class VoteEntity {
   @Column()
   community_id: string;
 
-  @ManyToOne(() => CommunityEntity, (community) => community.community_id)
+  @ManyToOne(() => CommunityEntity, (community) => community.vote)
   @JoinColumn({ name: 'community_id' })
   community: CommunityEntity;
 }

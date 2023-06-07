@@ -4,10 +4,13 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { TenantEntity } from './tenant.entity';
+import { ReplyEntity } from './reply.entity';
+import { VoteEntity } from './vote.entity';
 
 @Entity({ name: 't_community' })
 export class CommunityEntity {
@@ -38,4 +41,10 @@ export class CommunityEntity {
   })
   @JoinColumn({ name: 'tenant_id' })
   tenant: TenantEntity;
+
+  @OneToMany(() => ReplyEntity, (reply) => reply.community)
+  reply: ReplyEntity[];
+
+  @OneToMany(() => VoteEntity, (vote) => vote.community)
+  vote: VoteEntity[];
 }

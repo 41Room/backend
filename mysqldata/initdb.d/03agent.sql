@@ -1,5 +1,5 @@
 insert into
-    t_agent (
+    `41room`.`t_agent`(
         agent_id,
         building_id,
         agent_login_id,
@@ -17,7 +17,7 @@ values (
     );
 
 insert into
-    t_agent (
+    `41room`.`t_agent`(
         agent_id,
         building_id,
         agent_login_id,
@@ -35,7 +35,7 @@ values (
     );
 
 insert into
-    t_agent (
+    `41room`.`t_agent`(
         agent_id,
         building_id,
         agent_login_id,
@@ -53,7 +53,7 @@ values (
     );
 
 insert into
-    t_agent (
+    `41room`.`t_agent`(
         agent_id,
         building_id,
         agent_login_id,
@@ -71,7 +71,7 @@ values (
     );
 
 insert into
-    t_agent (
+    `41room`.`t_agent`(
         agent_id,
         building_id,
         agent_login_id,

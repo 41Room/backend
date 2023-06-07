@@ -5,3 +5,4 @@ export * from './plant.entity';
 export * from './review.entity';
 export * from './tenant.entity';
 export * from './vote.entity';
+export * from './reply.entity';
