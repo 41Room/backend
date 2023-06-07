@@ -58,6 +58,12 @@ export class AuthService {
     }
   }
 
+  /**
+   * 세대 로그인
+   * --
+   * @param tenatInfo
+   * @returns
+   */
   async signinTenant(tenatInfo: TenantSigninDTO) {
     try {
       const result = await this.tenantService.signinTenant(tenatInfo);

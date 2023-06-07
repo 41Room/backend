@@ -88,9 +88,17 @@ export class TenantService {
    */
   async signinTenant(tenantInfo: TenantSigninDTO) {
     try {
-      const { tenant_login_id, tenant_login_pw } = tenantInfo;
+      var cond = {};
+      const { tenant_login_id, tenant_login_pw, wallet_id } = tenantInfo;
+
+      if (wallet_id) {
+        cond = { wallet_id };
+      } else {
+        cond = { tenant_login_id, tenant_login_pw };
+      }
+
       const result = await this.tenantRepository.findOneOrFail({
-        where: { tenant_login_id, tenant_login_pw },
+        where: cond,
       });
       // const { tenant_login_pw: pw } = result;
       // const isMatch = await argon.verify(pw, tenant_login_pw);

@@ -11,5 +11,5 @@ export class TenantSigninDTO {
 
   @IsOptional()
   @IsString()
-  wallet_addr?: string;
+  wallet_id?: string;
 }
