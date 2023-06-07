@@ -104,7 +104,7 @@ CREATE TABLE IF NOT EXISTS `41room`.`t_plant` (
   `plant_id` CHAR(36) NOT NULL,
   `building_id` CHAR(36) NOT NULL,
   `plant_nm` VARCHAR(255) NOT NULL,
-  `plant_desc` VARCHAR(45) NULL,
+  `plant_desc` TEXT NULL,
   `plant_img` VARCHAR(255) NOT NULL,
   `plant_fee` FLOAT NOT NULL,
   `created_at` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
@@ -144,7 +144,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `41room`.`t_reply` (
   `reply_id` CHAR(36) NOT NULL,
-  `reply_content` TEXT NOT NULL,
+  `reply_content` LONGTEXT NOT NULL,
   `created_at` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
   `modified_at` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
   `community_id` CHAR(36) NOT NULL,
@@ -172,7 +172,7 @@ CREATE TABLE IF NOT EXISTS `41room`.`t_review` (
   `review_id` CHAR(36) NOT NULL,
   `plant_id` CHAR(36) NOT NULL,
   `tenant_id` CHAR(36) NOT NULL,
-  `review_content` TEXT NOT NULL,
+  `review_content` LONGTEXT NOT NULL,
   `review_grade` FLOAT NOT NULL,
   `created_at` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
   `modified_at` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,

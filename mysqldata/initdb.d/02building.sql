@@ -1,5 +1,5 @@
 insert into
-    t_building (
+    `41room`.`t_building` (
         building_id,
         building_title,
         building_description,
@@ -17,7 +17,7 @@ In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultric
     );
 
 insert into
-    t_building (
+    `41room`.`t_building` (
         building_id,
         building_title,
         building_description,
@@ -37,7 +37,7 @@ Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan fe
     );
 
 insert into
-    t_building (
+    `41room`.`t_building` (
         building_id,
         building_title,
         building_description,
@@ -57,7 +57,7 @@ Sed ante. Vivamus tortor. Duis mattis egestas metus.',
     );
 
 insert into
-    t_building (
+    `41room`.`t_building` (
         building_id,
         building_title,
         building_description,
@@ -77,7 +77,7 @@ Sed ante. Vivamus tortor. Duis mattis egestas metus.',
     );
 
 insert into
-    t_building (
+    `41room`.`t_building` (
         building_id,
         building_title,
         building_description,

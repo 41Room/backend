@@ -34,7 +34,9 @@ export class BuildingService {
    */
   async getBuildingList() {
     try {
-      const result = await this.buildingRepository.find();
+      const result = await this.buildingRepository.find({
+        relations: ['agent', 'tenant', 'plant'],
+      });
       return result;
     } catch (e) {
       throw e;

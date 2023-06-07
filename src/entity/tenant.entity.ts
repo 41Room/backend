@@ -4,10 +4,12 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { BuildingEntity } from './building.entity';
+import { ReviewEntity } from './review.entity';
 
 @Entity({ name: 't_tenant' })
 export class TenantEntity {
@@ -47,4 +49,7 @@ export class TenantEntity {
   })
   @JoinColumn({ name: 'building_id' })
   building: BuildingEntity;
+
+  @OneToMany(() => ReviewEntity, (review) => review.tenant)
+  review: ReviewEntity[];
 }

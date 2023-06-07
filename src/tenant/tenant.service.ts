@@ -21,12 +21,13 @@ export class TenantService {
    */
   async createTenant(tenant: CreateTenantDTO) {
     try {
-      const { tenant_login_pw } = tenant;
-      const hash = await argon.hash(tenant_login_pw);
-      const result = await this.tenantRepository.save({
-        ...tenant,
-        tenant_login_pw: hash,
-      });
+      const result = await this.tenantRepository.save(tenant);
+      // const { tenant_login_pw } = tenant;
+      // const hash = await argon.hash(tenant_login_pw);
+      // const result = await this.tenantRepository.save({
+      //   ...tenant,
+      //   tenant_login_pw: hash,
+      // });
       return result;
     } catch (e) {
       throw e;
@@ -99,6 +100,7 @@ export class TenantService {
 
       const result = await this.tenantRepository.findOneOrFail({
         where: cond,
+        relations: ['building'],
       });
       // const { tenant_login_pw: pw } = result;
       // const isMatch = await argon.verify(pw, tenant_login_pw);
