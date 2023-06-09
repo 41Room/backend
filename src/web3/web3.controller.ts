@@ -47,4 +47,21 @@ export class Web3Controller {
       });
     }
   }
+
+  @Post('/transfer/nft')
+  async nftTransfer(@Res() res: Response, @Body() body: TransferDTO) {
+    try {
+      const result = await this.web3Service.transfer(body);
+      return res.status(HttpStatus.OK).json({
+        status: HttpStatus.OK,
+        message: 'success',
+        data: result,
+      });
+    } catch (e) {
+      return res.status(HttpStatus.BAD_REQUEST).json({
+        status: HttpStatus.BAD_REQUEST,
+        message: e.message,
+      });
+    }
+  }
 }

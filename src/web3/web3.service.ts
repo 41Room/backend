@@ -1,6 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common';
 import Web3, { Transaction } from 'web3';
 import { TransferDTO } from './dto/transfer.dto';
+import { NFTransferDTO } from './dto';
 
 const ERC20ABI = [
   {
@@ -1292,6 +1293,9 @@ const ERC721ABI = [
 @Injectable()
 export class Web3Service {
   private readonly contract_addr = '0xBf028794F0C8437eD5e9263ad7aeE77D7E470bE3';
+  private readonly nft_contract_addr =
+    '0x0dA7CC729b5d3c84542e06358a939761D74AB03f';
+
   constructor(@Inject('Web3') private readonly web3: Web3) {}
 
   /**
@@ -1336,6 +1340,46 @@ export class Web3Service {
         transferData,
         process.env.WEB3_PK,
       );
+      await this.web3.eth.sendSignedTransaction(signedTx.rawTransaction);
+      return true;
+    } catch (e) {
+      throw e;
+    }
+  }
+
+  /**
+   * NFT 전송
+   * --
+   * @param transferInfo
+   * @returns
+   */
+  async nftTransfer(transferInfo: NFTransferDTO) {
+    try {
+      const { to, uri, name, description } = transferInfo;
+      const contract = new this.web3.eth.Contract(
+        ERC721ABI,
+        this.nft_contract_addr,
+      );
+
+      const data = contract.methods
+        // @ts-ignore
+        .safeMint(to, uri, name, description)
+        .encodeABI();
+
+      const mintData: Transaction = {
+        from: process.env.WEB3_ADDR,
+        to: this.contract_addr,
+        data,
+        gasLimit: this.web3.utils.toHex(800000), // 적절한 가스 리밋 설정
+        gasPrice: this.web3.utils.toHex(5000000000), // 적절한 가스 가격 설정
+        chainId: 11155111,
+      };
+
+      const signedTx = await this.web3.eth.accounts.signTransaction(
+        mintData,
+        process.env.WEB3_PK,
+      );
+
       await this.web3.eth.sendSignedTransaction(signedTx.rawTransaction);
       return true;
     } catch (e) {
