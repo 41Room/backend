@@ -13,6 +13,8 @@ import { FileModule } from './file/file.module';
 import { AuthModule } from './auth/auth.module';
 import { CommunityModule } from './community/community.module';
 import { VoteModule } from './vote/vote.module';
+import { PurchaseModule } from './purchase/purchase.module';
+import { Web3Module } from './web3/web3.module';
 
 @Module({
   imports: [
@@ -35,6 +37,8 @@ import { VoteModule } from './vote/vote.module';
     AuthModule,
     CommunityModule,
     VoteModule,
+    PurchaseModule,
+    Web3Module,
   ],
   controllers: [],
   providers: [],
