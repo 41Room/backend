@@ -1,14 +1,18 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CommunityEntity } from 'src/entity/community.entity';
-import { Repository } from 'typeorm';
+import { DataSource, Repository } from 'typeorm';
 import { CreateCommunityDTO, UpdateCommunityDTO } from './dto';
+import { VoteEntity } from 'src/entity';
 
 @Injectable()
 export class CommunityService {
   constructor(
     @InjectRepository(CommunityEntity)
     private communityRepository: Repository<CommunityEntity>,
+    @InjectRepository(VoteEntity)
+    private voteRepository: Repository<VoteEntity>,
+    private dataSource: DataSource,
   ) {}
 
   /**
@@ -18,10 +22,30 @@ export class CommunityService {
    * @returns
    */
   async createCommunity(communityInfo: CreateCommunityDTO) {
+    const queryRunner = this.dataSource.createQueryRunner();
     try {
-      const result = await this.communityRepository.save(communityInfo);
+      await queryRunner.connect();
+      var result: any;
+      await queryRunner.startTransaction();
+      const { vote: voteInfo, ...createInfo } = communityInfo;
+      const comm = this.communityRepository.create(createInfo);
+      result = await queryRunner.manager.save(comm);
+
+      if (voteInfo) {
+        const _vote = this.voteRepository.create({
+          ...voteInfo,
+          community_id: result.community_id,
+        });
+        const vote = await queryRunner.manager.save(_vote);
+        result = { ...result, vote };
+      }
+
+      await queryRunner.commitTransaction();
+
       return result;
     } catch (e) {
+      console.log(e);
+      await queryRunner.rollbackTransaction();
       throw e;
     }
   }
@@ -55,7 +79,8 @@ export class CommunityService {
             INNER JOIN t_tenant tt ON tc.tenant_id = tt.tenant_id
             INNER JOIN t_building tb ON tb.building_id = tt.building_id
         WHERE
-            tt.building_id = ?`,
+            tt.building_id = ?
+        ORDER BY tc.created_at DESC`,
         [`${building_id}`],
       );
 

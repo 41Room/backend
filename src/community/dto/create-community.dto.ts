@@ -1,4 +1,5 @@
 import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
+import { CommunityVoteDTO } from './community-vote.dto';
 
 export class CreateCommunityDTO {
   @IsOptional()
@@ -20,4 +21,7 @@ export class CreateCommunityDTO {
   @IsNotEmpty()
   @IsString()
   tenant_id: string;
+
+  @IsOptional()
+  vote?: CommunityVoteDTO;
 }
