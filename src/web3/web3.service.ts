@@ -842,24 +842,6 @@ const ERC721ABI = [
     type: 'event',
   },
   {
-    inputs: [
-      {
-        internalType: 'address',
-        name: 'to',
-        type: 'address',
-      },
-      {
-        internalType: 'uint256',
-        name: 'tokenId',
-        type: 'uint256',
-      },
-    ],
-    name: 'approve',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function',
-  },
-  {
     anonymous: false,
     inputs: [
       {
@@ -879,19 +861,6 @@ const ERC721ABI = [
     type: 'event',
   },
   {
-    inputs: [
-      {
-        internalType: 'uint256',
-        name: 'tokenId',
-        type: 'uint256',
-      },
-    ],
-    name: 'burn',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function',
-  },
-  {
     anonymous: false,
     inputs: [
       {
@@ -903,129 +872,6 @@ const ERC721ABI = [
     ],
     name: 'MetadataUpdate',
     type: 'event',
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: 'address',
-        name: 'previousOwner',
-        type: 'address',
-      },
-      {
-        indexed: true,
-        internalType: 'address',
-        name: 'newOwner',
-        type: 'address',
-      },
-    ],
-    name: 'OwnershipTransferred',
-    type: 'event',
-  },
-  {
-    inputs: [],
-    name: 'renounceOwnership',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        internalType: 'address',
-        name: 'to',
-        type: 'address',
-      },
-      {
-        internalType: 'string',
-        name: 'uri',
-        type: 'string',
-      },
-      {
-        internalType: 'string',
-        name: 'name',
-        type: 'string',
-      },
-      {
-        internalType: 'string',
-        name: 'description',
-        type: 'string',
-      },
-    ],
-    name: 'safeMint',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        internalType: 'address',
-        name: 'from',
-        type: 'address',
-      },
-      {
-        internalType: 'address',
-        name: 'to',
-        type: 'address',
-      },
-      {
-        internalType: 'uint256',
-        name: 'tokenId',
-        type: 'uint256',
-      },
-    ],
-    name: 'safeTransferFrom',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        internalType: 'address',
-        name: 'from',
-        type: 'address',
-      },
-      {
-        internalType: 'address',
-        name: 'to',
-        type: 'address',
-      },
-      {
-        internalType: 'uint256',
-        name: 'tokenId',
-        type: 'uint256',
-      },
-      {
-        internalType: 'bytes',
-        name: 'data',
-        type: 'bytes',
-      },
-    ],
-    name: 'safeTransferFrom',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        internalType: 'address',
-        name: 'operator',
-        type: 'address',
-      },
-      {
-        internalType: 'bool',
-        name: 'approved',
-        type: 'bool',
-      },
-    ],
-    name: 'setApprovalForAll',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function',
   },
   {
     anonymous: false,
@@ -1056,11 +902,6 @@ const ERC721ABI = [
     inputs: [
       {
         internalType: 'address',
-        name: 'from',
-        type: 'address',
-      },
-      {
-        internalType: 'address',
         name: 'to',
         type: 'address',
       },
@@ -1070,20 +911,7 @@ const ERC721ABI = [
         type: 'uint256',
       },
     ],
-    name: 'transferFrom',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        internalType: 'address',
-        name: 'newOwner',
-        type: 'address',
-      },
-    ],
-    name: 'transferOwnership',
+    name: 'approve',
     outputs: [],
     stateMutability: 'nonpayable',
     type: 'function',
@@ -1105,6 +933,19 @@ const ERC721ABI = [
       },
     ],
     stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: 'tokenId',
+        type: 'uint256',
+      },
+    ],
+    name: 'burn',
+    outputs: [],
+    stateMutability: 'nonpayable',
     type: 'function',
   },
   {
@@ -1206,19 +1047,6 @@ const ERC721ABI = [
     type: 'function',
   },
   {
-    inputs: [],
-    name: 'owner',
-    outputs: [
-      {
-        internalType: 'address',
-        name: '',
-        type: 'address',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
     inputs: [
       {
         internalType: 'uint256',
@@ -1235,6 +1063,103 @@ const ERC721ABI = [
       },
     ],
     stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'to',
+        type: 'address',
+      },
+      {
+        internalType: 'string',
+        name: 'uri',
+        type: 'string',
+      },
+      {
+        internalType: 'string',
+        name: 'name',
+        type: 'string',
+      },
+      {
+        internalType: 'string',
+        name: 'description',
+        type: 'string',
+      },
+    ],
+    name: 'safeMint',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'from',
+        type: 'address',
+      },
+      {
+        internalType: 'address',
+        name: 'to',
+        type: 'address',
+      },
+      {
+        internalType: 'uint256',
+        name: 'tokenId',
+        type: 'uint256',
+      },
+    ],
+    name: 'safeTransferFrom',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'from',
+        type: 'address',
+      },
+      {
+        internalType: 'address',
+        name: 'to',
+        type: 'address',
+      },
+      {
+        internalType: 'uint256',
+        name: 'tokenId',
+        type: 'uint256',
+      },
+      {
+        internalType: 'bytes',
+        name: 'data',
+        type: 'bytes',
+      },
+    ],
+    name: 'safeTransferFrom',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'operator',
+        type: 'address',
+      },
+      {
+        internalType: 'bool',
+        name: 'approved',
+        type: 'bool',
+      },
+    ],
+    name: 'setApprovalForAll',
+    outputs: [],
+    stateMutability: 'nonpayable',
     type: 'function',
   },
   {
@@ -1288,13 +1213,36 @@ const ERC721ABI = [
     stateMutability: 'view',
     type: 'function',
   },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'from',
+        type: 'address',
+      },
+      {
+        internalType: 'address',
+        name: 'to',
+        type: 'address',
+      },
+      {
+        internalType: 'uint256',
+        name: 'tokenId',
+        type: 'uint256',
+      },
+    ],
+    name: 'transferFrom',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
 ];
 
 @Injectable()
 export class Web3Service {
   private readonly contract_addr = '0xBf028794F0C8437eD5e9263ad7aeE77D7E470bE3';
   private readonly nft_contract_addr =
-    '0x0dA7CC729b5d3c84542e06358a939761D74AB03f';
+    '0x8Ffbb27E1edeDa26e3ac55826ddCE8AF3a9b3C2d';
 
   constructor(@Inject('Web3') private readonly web3: Web3) {}
 
@@ -1326,7 +1274,7 @@ export class Web3Service {
 
       const data = contract.methods
         // @ts-ignore
-        .transfer(to, amount)
+        .transfer(to, Number(amount))
         .encodeABI();
       const transferData: Transaction = {
         from: process.env.WEB3_ADDR,
@@ -1343,6 +1291,7 @@ export class Web3Service {
       await this.web3.eth.sendSignedTransaction(signedTx.rawTransaction);
       return true;
     } catch (e) {
+      console.log(e);
       throw e;
     }
   }
@@ -1382,6 +1331,22 @@ export class Web3Service {
 
       await this.web3.eth.sendSignedTransaction(signedTx.rawTransaction);
       return true;
+    } catch (e) {
+      throw e;
+    }
+  }
+
+  async getTokenBalance(addr: string) {
+    try {
+      const contract = new this.web3.eth.Contract(ERC20ABI, this.contract_addr);
+
+      const result = await contract.methods
+        // @ts-ignore
+        .balanceOf(addr)
+        .call();
+      const balance = this.web3.utils.fromWei(Number(result), 'ether');
+      console.log(balance);
+      return balance;
     } catch (e) {
       throw e;
     }

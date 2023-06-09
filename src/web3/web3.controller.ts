@@ -64,4 +64,21 @@ export class Web3Controller {
       });
     }
   }
+
+  @Get('/token/:addr')
+  async getTokenBalance(@Res() res: Response, @Param('addr') addr: string) {
+    try {
+      const result = await this.web3Service.getTokenBalance(addr);
+      return res.status(HttpStatus.OK).json({
+        status: HttpStatus.OK,
+        message: 'success',
+        data: result,
+      });
+    } catch (e) {
+      return res.status(HttpStatus.BAD_REQUEST).json({
+        status: HttpStatus.BAD_REQUEST,
+        message: e.message,
+      });
+    }
+  }
 }
