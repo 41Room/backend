@@ -1345,7 +1345,6 @@ export class Web3Service {
         .balanceOf(addr)
         .call();
       const balance = this.web3.utils.fromWei(Number(result), 'ether');
-      console.log(balance);
       return balance;
     } catch (e) {
       throw e;
